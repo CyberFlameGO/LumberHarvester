@@ -1,6 +1,6 @@
-name: ${project.name}
+name: LumberHarvester
 main: net.cyberflame.lumberharvester.Main
-version: ${project.version}
+version: 1.0.0
 description: Main
 website: https://cyberfla.me/
 author: CyberFlame
