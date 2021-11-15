@@ -19,7 +19,6 @@ public class PlayerJoinListener implements Listener {
         if(material == Material.LOG || material == Material.LOG_2) {
             player.getInventory().addItem(new ItemStack(material, 1, blockData));
             block.setType(Material.STONE);
-
         }
     }
 }
