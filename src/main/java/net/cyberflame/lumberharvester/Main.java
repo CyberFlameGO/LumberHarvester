@@ -8,6 +8,14 @@ import net.cyberflame.lumberharvester.listeners.BlockBreakListener;
 
 public class Main extends JavaPlugin
 {
+    /*
+    TODO:
+        * Add a bypass toggle (just a case of copying from my KPM logic)
+        * Make the logs being processed get saved to a file (and get processed on server relaunch)
+        * Make sure all is working
+     */
+
+
     
     @Override
     public void onEnable()
