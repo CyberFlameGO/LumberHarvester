@@ -12,11 +12,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitTask;
 
 public class BlockBreakListener implements Listener {
-
-    static final Long taskInterval = Main.getTaskInterval();
 
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
@@ -30,8 +27,9 @@ public class BlockBreakListener implements Listener {
         byte blockData = block.getData();
         player.getInventory().addItem(new ItemStack(material, 1, blockData));
         block.setType(Material.STONE);
+        final long taskInterval = Main.getTaskInterval();
         final Main instance = Main.getInstance();
         final BlockState blockState = block.getState();
-        BukkitTask task = new ReplaceTask(block, material, blockData, blockState).runTaskLater(instance, taskInterval);
+        new ReplaceTask(block, material, blockData, blockState).runTaskLater(instance, taskInterval);
     }
 }
