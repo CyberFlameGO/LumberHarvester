@@ -37,12 +37,11 @@ public class BypassCommand implements CommandExecutor {
                                                                                                targetname) :
                                                          FormatUtils.BYPASS_TOGGLE_OFF.replaceAll("%player%",
                                                                                                targetname)));
-                return true;
             }
             else {
                 FormatUtils.sendMessage(sender, FormatUtils.UNKNOWN_PLAYER.replaceAll("%player%", args[0]));
-                return true;
             }
+            return true;
         }
         Player player = (Player) sender;
         instance.setBypassing(player.getUniqueId());

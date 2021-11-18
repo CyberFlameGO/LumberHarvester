@@ -35,18 +35,9 @@ public class FormatUtils
         seconds %= 60;
         long ss = seconds;
 
-        if (days > 0)
-            {
-                return days + "d " + hh + "h " + mm + "m " + ss + "s";
-            }
-        if (hh > 0)
-            {
-                return hh + "h " + mm + "m " + ss + "s";
-            }
-        if (mm > 0)
-            {
-                return mm + "m " + ss + "s";
-            }
+        if (days > 0) return days + "d " + hh + "h " + mm + "m " + ss + "s";
+        if (hh > 0) return hh + "h " + mm + "m " + ss + "s";
+        if (mm > 0) return mm + "m " + ss + "s";
         return ss + "s";
     }
 
@@ -55,10 +46,7 @@ public class FormatUtils
         StringBuilder sb = new StringBuilder();
         for (String line : string.split("\n"))
             {
-                if (sb.length() > 0)
-                    {
-                        sb.append("\n");
-                    }
+                if (sb.length() > 0) sb.append("\n");
                 sb.append(line);
             }
         return sb.toString();
@@ -68,13 +56,7 @@ public class FormatUtils
     {
         prefix = prefix.toLowerCase();
         List<String> matches = new ArrayList<>();
-        for (String s : input)
-            {
-                if (s.toLowerCase().startsWith(prefix))
-                    {
-                        matches.add(s);
-                    }
-            }
+        for (String s : input) if (s.toLowerCase().startsWith(prefix)) matches.add(s);
         return matches;
     }
 
@@ -90,7 +72,7 @@ public class FormatUtils
 
     public static void bMsg(String message)
     {
-        for (Player p : Bukkit.getOnlinePlayers()) { sendMessage(p, message); }
+        for (Player p : Bukkit.getOnlinePlayers()) sendMessage(p, message);
     }
 
     public static void sendConsoleMessage(String message)
