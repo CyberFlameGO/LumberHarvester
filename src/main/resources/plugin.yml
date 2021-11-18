@@ -1,6 +1,15 @@
-name: ${project.name}
+name: LumberHarvester
 main: net.cyberflame.lumberharvester.Main
 version: ${project.version}
 description: Main
 website: https://cyberfla.me/
 author: CyberFlame
+permissions:
+  lh.bypass:
+    description: Allows the user to run /lhbypass
+    default: op
+commands:
+  buildmode:
+    description: Bypass LumberHarvester functionality whilst enabled
+    permission: lh.bypass
+    usage: "/lhbypass [user]"
