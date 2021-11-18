@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 public class BlockBreakListener implements Listener {
 
     final Main instance = Main.getInstance();
+    final long taskInterval = Main.getTaskInterval();
 
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
@@ -30,15 +31,14 @@ public class BlockBreakListener implements Listener {
         final World world = block.getWorld();
         // return on same name as the world is in disabled-worlds.
         if(Main.getDisabledWorlds().stream().anyMatch(worldName -> world.getName().equalsIgnoreCase(worldName))) return;
-        Material material = block.getType();
+        final Material material = block.getType();
         if(material != Material.LOG && material != Material.LOG_2) return;
-        player.getInventory().addItem(block.getDrops().toArray(new ItemStack[0]));
         final byte blockData = block.getData();
         final BlockState blockState = block.getState();
         final Location location = block.getLocation();
         event.setCancelled(true);
         block.setType(Material.BEDROCK);
-        final long taskInterval = Main.getTaskInterval();
+        player.getInventory().addItem(block.getDrops().toArray(new ItemStack[0]));
         new ReplaceTask(block, world, location, material, blockData, blockState).runTaskLater(instance, taskInterval);
     }
 }
