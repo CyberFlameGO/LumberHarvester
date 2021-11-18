@@ -23,7 +23,8 @@ public class Main extends JavaPlugin
     private static Map<UUID, Boolean> bypassing;
     private static List<String> disabledWorlds;
     private static long taskDelay;
-    
+    private UUID uuid;
+
     @Override
     public void onEnable()
     {
@@ -79,7 +80,8 @@ public class Main extends JavaPlugin
 
     public boolean getBypassing(UUID uuid)
     {
-        return bypassing.get(uuid);
+        this.uuid = uuid;
+        return bypassing.get(uuid) != null;
     }
 }
 

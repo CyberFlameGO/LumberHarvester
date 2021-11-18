@@ -3,6 +3,7 @@ package net.cyberflame.lumberharvester.listeners;
 import net.cyberflame.lumberharvester.Main;
 import net.cyberflame.lumberharvester.tasks.ReplaceTask;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -25,18 +26,19 @@ public class BlockBreakListener implements Listener {
         Player player = event.getPlayer();
         if (instance.getBypassing(player.getUniqueId())) return;
         if (player.getGameMode() == GameMode.CREATIVE) return;
-        Block block = event.getBlock();
-        World world = block.getWorld();
+        final Block block = event.getBlock();
+        final World world = block.getWorld();
         // return on same name as the world is in disabled-worlds.
-        if (Main.getDisabledWorlds().stream().anyMatch(worldName -> world.getName().equalsIgnoreCase(worldName))) return;
+        if(Main.getDisabledWorlds().stream().anyMatch(worldName -> world.getName().equalsIgnoreCase(worldName))) return;
         Material material = block.getType();
-        if (material != Material.LOG && material != Material.LOG_2) return;
-        //noinspection deprecation
-        byte blockData = block.getData();
-        player.getInventory().addItem(new ItemStack(material, 1, blockData));
+        if(material != Material.LOG && material != Material.LOG_2) return;
+        player.getInventory().addItem(block.getDrops().toArray(new ItemStack[0]));
+        final byte blockData = block.getData();
+        final BlockState blockState = block.getState();
+        final Location location = block.getLocation();
+        event.setCancelled(true);
         block.setType(Material.BEDROCK);
         final long taskInterval = Main.getTaskInterval();
-        final BlockState blockState = block.getState();
-        new ReplaceTask(block, material, blockData, blockState).runTaskLater(instance, taskInterval);
+        new ReplaceTask(block, world, location, material, blockData, blockState).runTaskLater(instance, taskInterval);
     }
 }

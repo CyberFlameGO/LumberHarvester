@@ -1,6 +1,8 @@
 package net.cyberflame.lumberharvester.tasks;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -11,13 +13,19 @@ public class ReplaceTask extends BukkitRunnable
 {
 
     private final Block block;
+    private final World world;
+    private final Location location;
     private final Material material;
     private final byte blockData;
     private final BlockState blockState;
 
-    public ReplaceTask(final Block block, final Material material, final byte blockData, final BlockState blockState)
+    public ReplaceTask(final Block block, final World world, final Location location, final Material material,
+                       final byte blockData,
+                       final BlockState blockState)
     {
         this.block = block;
+        this.world = world;
+        this.location = location;
         this.material = material;
         this.blockData = blockData;
         this.blockState = blockState;
@@ -26,7 +34,7 @@ public class ReplaceTask extends BukkitRunnable
     @Override
     public void run()
     {
-        if(block.getType() != Material.BEDROCK) return;
+        if(world.getBlockAt(location).getType() != Material.BEDROCK) return;
         block.setType(material);
         //noinspection deprecation
         block.setData(blockData);
