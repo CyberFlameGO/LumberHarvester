@@ -38,7 +38,7 @@ public class ReplaceTask extends BukkitRunnable
         block.setType(material);
         //noinspection deprecation
         block.setData(blockData);
-        // if(!blockState.isPlaced()) return;
+        if(!blockState.isPlaced()) return;
         blockState.update(true);
     }
 }
