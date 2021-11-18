@@ -38,6 +38,13 @@ public class BlockBreakListener implements Listener {
         final Location location = block.getLocation();
         event.setCancelled(true);
         player.getInventory().addItem(block.getDrops().toArray(new ItemStack[0]));
+        /*
+         i could get rid of the event cancellation and have the block get replaced to bedrock underneath the
+          bukkitrunnable if there are compat issues or something, but for now this works i guess.
+         another solution may be to set the block to air in place of the event cancellation, and then
+          set it to bedrock (may not work, because since it looks like the server handles everything
+          last, it may just try to break the bedrock, but you get the idea
+        */
         block.setType(Material.BEDROCK);
         new ReplaceTask(block, world, location, material, blockData, blockState).runTaskLater(instance, taskInterval);
     }
