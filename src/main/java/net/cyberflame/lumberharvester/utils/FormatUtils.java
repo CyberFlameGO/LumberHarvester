@@ -13,12 +13,12 @@ public class FormatUtils
 {
 
     // TODO: Change these messages to enums possibly
-    public static String NO_PERMISSION = "&cYou do not have permission to perform this command.";
-    public static String BYPASS_OTHER_TOGGLE_OFF = "&eYou &cdisabled &6%player%'s &ebypassability.";
-    public static String BYPASS_OTHER_TOGGLE_ON = "&eYou &aenabled &6%player%'s &ebypassability.";
-    public static String BYPASS_TOGGLE_OFF = "&eYou &cdisabled &eyour &ebypassability.";
-    public static String BYPASS_TOGGLE_ON = "&eYou &aenabled &eyour &ebypassability.";
-    public static String UNKNOWN_PLAYER = "&cError: No player matching &e%player% &cis connected to this server.";
+    public static final String NO_PERMISSION = "&cYou do not have permission to perform this command.";
+    public static final String BYPASS_OTHER_TOGGLE_OFF = "&eYou &cdisabled &6%player%'s &ebypassability.";
+    public static final String BYPASS_OTHER_TOGGLE_ON = "&eYou &aenabled &6%player%'s &ebypassability.";
+    public static final String BYPASS_TOGGLE_OFF = "&eYou &cdisabled &eyour &ebypassability.";
+    public static final String BYPASS_TOGGLE_ON = "&eYou &aenabled &eyour &ebypassability.";
+    public static final String UNKNOWN_PLAYER = "&cError: No player matching &e%player% &cis connected to this server.";
 
     public static String g(String msg)
     {
@@ -43,13 +43,7 @@ public class FormatUtils
 
     public static String main(String string)
     {
-        StringBuilder sb = new StringBuilder();
-        for (String line : string.split("\n"))
-            {
-                if (sb.length() > 0) sb.append("\n");
-                sb.append(line);
-            }
-        return sb.toString();
+        return String.join("\n", string.split("\n"));
     }
 
     public static List<String> startsWith(String prefix, String... input)

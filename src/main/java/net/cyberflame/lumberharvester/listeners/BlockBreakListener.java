@@ -13,37 +13,31 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-
-import java.util.Collection;
-import java.util.HashMap;
+import org.jetbrains.annotations.NotNull;
 
 public class BlockBreakListener implements Listener {
 
     final Main instance = Main.getInstance();
-    private HashMap<String, Collection<PotionEffect>> playerMap = new HashMap<>();
 
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
-    public void onBlockBreak(final BlockBreakEvent event) {
+    public void onBlockBreak(final @NotNull BlockBreakEvent event) {
         Player player = event.getPlayer();
         if (instance.getBypassing(player.getUniqueId())) return;
         if (player.getGameMode() == GameMode.CREATIVE) return;
         Block block = event.getBlock();
         World world = block.getWorld();
-        for (int i = 0; i < Main.getDisabledWorlds().size(); i++)
+        // return on same name as the world is in disabled-worlds.
+        if (Main.getDisabledWorlds().stream().anyMatch(worldName -> world.getName().equalsIgnoreCase(worldName)))
             {
-                String worldName = Main.getDisabledWorlds().get(i);
-
-                // return on same name as the world is in disabled-worlds.
-                if (world.getName().equalsIgnoreCase(worldName)) return;
+                return;
             }
         Material material = block.getType();
         if (material != Material.LOG && material != Material.LOG_2) return;
         //noinspection deprecation
         byte blockData = block.getData();
         player.getInventory().addItem(new ItemStack(material, 1, blockData));
-        block.setType(Material.STONE);
+        block.setType(Material.BEDROCK);
         final long taskInterval = Main.getTaskInterval();
         final BlockState blockState = block.getState();
         new ReplaceTask(block, material, blockData, blockState).runTaskLater(instance, taskInterval);

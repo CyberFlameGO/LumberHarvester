@@ -11,12 +11,12 @@ import org.bukkit.entity.Player;
 public class BypassCommand implements CommandExecutor {
 
     private final Main instance = Main.getInstance();
-    private final String permission = "lh.bypass";
-    private final String noPermission = FormatUtils.NO_PERMISSION;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        final String permission = "lh.bypass";
         if (!sender.hasPermission(permission)) {
+            String noPermission = FormatUtils.NO_PERMISSION;
             FormatUtils.sendMessage(sender, noPermission);
             return true;
         }

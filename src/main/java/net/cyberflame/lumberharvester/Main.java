@@ -70,9 +70,11 @@ public class Main extends JavaPlugin
         if (bypassing.get(uuid) != null)
             {
                 bypassing.remove(uuid);
-                return;
             }
-        bypassing.put(uuid, true);
+        else
+            {
+                bypassing.put(uuid, true);
+            }
     }
 
     public boolean getBypassing(UUID uuid)
