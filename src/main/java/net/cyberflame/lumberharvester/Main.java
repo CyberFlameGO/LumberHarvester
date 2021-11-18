@@ -60,7 +60,7 @@ public class Main extends JavaPlugin
         return disabledWorlds;
     }
 
-    public static Map<UUID, Boolean> getAllBypassing()
+    public Map<UUID, Boolean> getAllBypassing()
     {
         return bypassing;
     }
@@ -77,7 +77,7 @@ public class Main extends JavaPlugin
 
     public boolean getBypassing(UUID uuid)
     {
-        return bypassing.get(uuid) != null;
+        return bypassing.get(uuid);
     }
 }
 
