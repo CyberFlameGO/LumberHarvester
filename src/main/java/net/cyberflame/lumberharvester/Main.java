@@ -22,6 +22,7 @@ public class Main extends JavaPlugin
 
     private static Map<UUID, Boolean> bypassing;
     private static List<String> disabledWorlds;
+    private static long taskDelay;
     
     @Override
     public void onEnable()
@@ -31,6 +32,7 @@ public class Main extends JavaPlugin
         saveConfig();
         Main.instance = this;
         bypassing = new HashMap<>();
+        taskDelay = (long) getInstance().getConfig().getInt("replace-delay") * 20L;
         disabledWorlds = this.getConfig().getStringList("disabled-worlds");
         this.getCommand("lhbypass").setExecutor(new BypassCommand());
         Bukkit.getPluginManager().registerEvents(new BlockBreakListener(), this);
@@ -45,8 +47,6 @@ public class Main extends JavaPlugin
     {
         return Main.instance;
     }
-
-    private static final long taskDelay = (long) getInstance().getConfig().getInt("replace-delay") * 20L;
 
     @SuppressWarnings("FinalStaticMethod")
     public static final long getTaskInterval()
