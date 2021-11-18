@@ -28,10 +28,7 @@ public class BlockBreakListener implements Listener {
         Block block = event.getBlock();
         World world = block.getWorld();
         // return on same name as the world is in disabled-worlds.
-        if (Main.getDisabledWorlds().stream().anyMatch(worldName -> world.getName().equalsIgnoreCase(worldName)))
-            {
-                return;
-            }
+        if (Main.getDisabledWorlds().stream().anyMatch(worldName -> world.getName().equalsIgnoreCase(worldName))) return;
         Material material = block.getType();
         if (material != Material.LOG && material != Material.LOG_2) return;
         //noinspection deprecation
