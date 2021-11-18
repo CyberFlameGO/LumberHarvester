@@ -9,7 +9,7 @@ permissions:
     description: Allows the user to run /lhbypass
     default: op
 commands:
-  buildmode:
+  lhbypass:
     description: Bypass LumberHarvester functionality whilst enabled
     permission: lh.bypass
     usage: "/lhbypass [user]"
