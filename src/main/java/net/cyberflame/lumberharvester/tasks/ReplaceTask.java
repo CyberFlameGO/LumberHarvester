@@ -5,7 +5,8 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.scheduler.BukkitRunnable;
 
-// I could use a regular Runnable instead, but I feel like this is more readable.
+// I could use a regular Runnable instead (and even have this scheduled in the listener, but I feel like this is more
+// clean and readable.
 public class ReplaceTask extends BukkitRunnable
 {
 
