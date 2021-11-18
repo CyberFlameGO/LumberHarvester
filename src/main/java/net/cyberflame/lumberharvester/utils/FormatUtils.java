@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 
 public class FormatUtils
 {
-
     // TODO: Change these messages to enums possibly
     public static final String NO_PERMISSION = "&cYou do not have permission to perform this command.";
     public static final String BYPASS_OTHER_TOGGLE_OFF = "&eYou &cdisabled &6%player%'s &ebypassability.";
