@@ -15,7 +15,8 @@ public class ReplaceTask extends BukkitRunnable
     private final byte blockData;
     private final BlockState blockState;
 
-    public ReplaceTask(final Block block, final Material material, final byte blockData, final BlockState blockState) {
+    public ReplaceTask(final Block block, final Material material, final byte blockData, final BlockState blockState)
+    {
         this.block = block;
         this.material = material;
         this.blockData = blockData;
