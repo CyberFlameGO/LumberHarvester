@@ -1,3 +1,3 @@
 replace-delay: 15 # in seconds
 disabled-worlds: [] # remove the square brackets and follow the format below to use this
-# - disabled-world
+#  - disabled-world

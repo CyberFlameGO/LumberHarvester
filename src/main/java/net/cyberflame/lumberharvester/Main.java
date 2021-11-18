@@ -46,7 +46,7 @@ public class Main extends JavaPlugin
         return Main.instance;
     }
 
-    private static long taskDelay = getInstance().getConfig().getInt("replace-delay") * 20L;
+    private static final long taskDelay = (long) getInstance().getConfig().getInt("replace-delay") * 20L;
 
     @SuppressWarnings("FinalStaticMethod")
     public static final long getTaskInterval()
