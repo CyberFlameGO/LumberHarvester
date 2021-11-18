@@ -37,8 +37,8 @@ public class BlockBreakListener implements Listener {
         final BlockState blockState = block.getState();
         final Location location = block.getLocation();
         event.setCancelled(true);
-        block.setType(Material.BEDROCK);
         player.getInventory().addItem(block.getDrops().toArray(new ItemStack[0]));
+        block.setType(Material.BEDROCK);
         new ReplaceTask(block, world, location, material, blockData, blockState).runTaskLater(instance, taskInterval);
     }
 }
