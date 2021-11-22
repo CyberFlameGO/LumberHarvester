@@ -24,6 +24,7 @@ public class Main extends JavaPlugin
     private static List<String> disabledWorlds;
     private static long taskDelay;
     private UUID uuid;
+    private static Main instance;
 
     @Override
     public void onEnable()
@@ -40,8 +41,6 @@ public class Main extends JavaPlugin
     }
 
     // this shouldn't cause memory leaks since it's not static in the listener
-
-    private static Main instance;
 
     @SuppressWarnings("FinalStaticMethod")
     public static final Main getInstance()
@@ -68,14 +67,8 @@ public class Main extends JavaPlugin
 
     public void setBypassing(UUID uuid)
     {
-        if (bypassing.get(uuid) != null)
-            {
-                bypassing.remove(uuid);
-            }
-        else
-            {
-                bypassing.put(uuid, true);
-            }
+        if (bypassing.get(uuid) != null) bypassing.remove(uuid);
+        else bypassing.put(uuid, true);
     }
 
     public boolean getBypassing(UUID uuid)
