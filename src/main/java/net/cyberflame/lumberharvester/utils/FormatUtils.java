@@ -19,11 +19,13 @@ public class FormatUtils
     public static final String BYPASS_TOGGLE_ON = "&eYou &aenabled &eyour &ebypassability.";
     public static final String UNKNOWN_PLAYER = "&cError: No player matching &e%player% &cis connected to this server.";
 
+    @SuppressWarnings("unused")
     public static String g(String msg)
     {
         return msg;
     }
 
+    @SuppressWarnings("unused")
     public static String formatSeconds(long seconds)
     {
         long days = seconds / (24 * 60 * 60);
@@ -40,11 +42,13 @@ public class FormatUtils
         return ss + "s";
     }
 
+    @SuppressWarnings("unused")
     public static String main(String string)
     {
         return String.join("\n", string.split("\n"));
     }
 
+    @SuppressWarnings("unused")
     public static List<String> startsWith(String prefix, String... input)
     {
         prefix = prefix.toLowerCase();
@@ -63,16 +67,19 @@ public class FormatUtils
         sender.sendMessage(replace(message));
     }
 
+    @SuppressWarnings("unused")
     public static void bMsg(String message)
     {
         for (Player p : Bukkit.getOnlinePlayers()) sendMessage(p, message);
     }
 
+    @SuppressWarnings("unused")
     public static void sendConsoleMessage(String message)
     {
         Main.getInstance().getServer().getConsoleSender().sendMessage(replace(message));
     }
 
+    @SuppressWarnings("unused")
     public static String format(String message, String str0, String str1)
     {
         return message.replace(str0, str1);

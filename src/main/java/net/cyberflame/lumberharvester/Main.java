@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+@SuppressWarnings("unused")
 public class Main extends JavaPlugin
 {
     /*
@@ -23,7 +24,6 @@ public class Main extends JavaPlugin
     private static Map<UUID, Boolean> bypassing;
     private static List<String> disabledWorlds;
     private static long taskDelay;
-    private UUID uuid;
     private static Main instance;
 
     @Override
@@ -73,7 +73,6 @@ public class Main extends JavaPlugin
 
     public boolean getBypassing(UUID uuid)
     {
-        this.uuid = uuid;
         return bypassing.get(uuid) != null;
     }
 }
